@@ -26,8 +26,13 @@
 			
 			<ComponentGroupRef 
 				Id="AppComponents"/>
-
+			<ComponentRef 
+				Id="AppShortcut" />
 		</Feature>
+
+		<Icon
+		 Id="MyIcon.ico"
+		 SourceFile="$(var.SolutionDir)src\AppInstaller\myIcon.ico" />
 	</Product>
 
 	<Fragment>
@@ -37,13 +42,26 @@
 			
 			<Directory 
 				Id="ProgramFilesFolder">
-				
 				<Directory 
 					Id="INSTALLFOLDER" 
 					Name="AppFolder" />
-				
+			</Directory>
+
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="ProgramMenuDir" Name="My Company"/>
 			</Directory>
 		</Directory>
+
+		<DirectoryRef 
+			Id="ProgramMenuDir">
+			<Component 
+				Id="AppShortcut" 
+				Guid="{882F49F7-3F94-4DED-9796-15A3511AED4C}">
+				
+				<RemoveFolder Id="ProgramMenuDir" On="uninstall"/>
+				<RegistryValue Root="HKCU" Key="Software\MyCompany\MyApplicationName" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+			</Component>
+		</DirectoryRef>
 	</Fragment>
 
 	<Fragment>
@@ -58,9 +76,42 @@
 				<File
 					Id="DemoApp_Exe"
 					Source="$(var.SolutionDir)src\bin\$(var.Configuration)\net6.0-windows\DemoApp.exe"
-					KeyPath="yes"/>
+					KeyPath="yes">
+
+					<Shortcut
+					Id="ApplicationStartMenuShortcut"
+					Directory="ProgramMenuDir"
+					Name="My Application Name"
+				    Description="My Application Description"
+					WorkingDirectory="APPLICATIONROOTDIRECTORY"
+					Icon="MyIcon.ico"
+                    Advertise="yes"
+					Arguments="ArgsFromWix"/>
+				</File>
 				
-			</Component>		   
+			</Component>
+
+			<Component
+				Id="DemoAppdll"
+				Guid="{13023AAE-6A6C-4145-BBF0-909FD4B4C181}">
+
+				<File
+					Id="DemoApp_dll"
+					Source="$(var.SolutionDir)src\bin\$(var.Configuration)\net6.0-windows\DemoApp.dll"
+					KeyPath="yes"/>
+
+			</Component>
+
+		<Component
+				Id="DemoAppruntimeconfigjson"
+				Guid="{CA30EAAD-4EA8-4CD3-ADFE-ED5052730AF0}">
+
+				<File
+					Id="DemoApp_runtimeconfig_json"
+					Source="$(var.SolutionDir)src\bin\$(var.Configuration)\net6.0-windows\DemoApp.runtimeconfig.json"
+					KeyPath="yes"/>
+
+			</Component>
 
 		</ComponentGroup>
 	</Fragment>

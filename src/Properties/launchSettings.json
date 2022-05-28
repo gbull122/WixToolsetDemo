@@ -1,8 +1,7 @@
 {
   "profiles": {
     "DemoApp": {
-      "commandName": "Project",
-      "commandLineArgs": "TestArg"
+      "commandName": "Project"
     }
   }
 }

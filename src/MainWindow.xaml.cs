@@ -31,7 +31,10 @@ namespace DemoApp
 
             DataContext = this;
             var args = Environment.GetCommandLineArgs();
-            FirstArg = args[1];
+            if (args.Length > 1)
+                FirstArg = args[1];
+            else
+                FirstArg = args[0];
         }
     }
 }
