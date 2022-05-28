@@ -4,43 +4,40 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>3.10</ProductVersion>
-    <ProjectGuid>0ee9b4e6-ac69-4546-b683-a0331b75c37a</ProjectGuid>
+    <ProjectGuid>99ec730d-5fce-4b1c-b2f3-910e26568ca1</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>DataInstaller</OutputName>
-    <OutputType>Package</OutputType>
+    <OutputName>Bootstrapper</OutputName>
+    <OutputType>Bundle</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-	  <DefineConstants>Debug;SourceDir=$(SolutionDir)Data</DefineConstants>
+    <DefineConstants>Debug</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-	  <DefineConstants>SourceDir=$(SolutionDir)Data</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Product.wxs" />
-	  <Compile Include="DataComp.wxs" />
+    <Compile Include="Bundle.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixBalExtension">
+      <HintPath>$(WixExtDir)\WixBalExtension.dll</HintPath>
+      <Name>WixBalExtension</Name>
+    </WixExtension>
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
   <Target Name="EnsureWixToolsetInstalled" Condition=" '$(WixTargetsImported)' != 'true' ">
     <Error Text="The WiX Toolset v3.11 (or newer) build tools must be installed to build this project. To download the WiX Toolset, see http://wixtoolset.org/releases/" />
   </Target>
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it.
+	Other similar extension points exist, see Wix.targets.
 	<Target Name="BeforeBuild">
-		<HeatDirectory 
-			ToolPath="$(WixToolPath)" 
-			AutogenerateGuids="true" 
-			OutputFile="DataComp.wxs" 
-			Directory="$(SolutionDir)Data" 
-			ComponentGroupName="DataComponents" 
-			DirectoryRefId="DATAFOLDER" 
-			SuppressRootDirectory="true" 
-			PreprocessorVariable="var.SourceDir" 
-			SuppressRegistry="true" 
-			NoLogo="true" 
-			RunAsSeparateProcess="$(RunWixToolsOutOfProc)">
-		</HeatDirectory>
 	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
 </Project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Bundle 
+		Name="Bootstrapper" 
+		Version="1.0.0.0" 
+		Manufacturer="My Company" 
+		UpgradeCode="99ec730d-5fce-4b1c-b2f3-910e26568ca1">
+		
+		<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" />
+
+		<Chain>
+			<MsiPackage Name="AppInstaller" SourceFile="$(var.SolutionDir)src\AppInstaller\bin\$(var.Configuration)\AppInstaller.msi" Vital="yes" />
+			<MsiPackage Name="DataInstaller" SourceFile="$(var.SolutionDir)src\DataInstaller\bin\$(var.Configuration)\DataInstaller.msi" Vital="yes" />
+		</Chain>
+	</Bundle>
+</Wix>

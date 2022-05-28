@@ -9,6 +9,8 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "AppInstaller", "src\AppInst
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "DataInstaller", "src\DataInstaller\DataInstaller.wixproj", "{0EE9B4E6-AC69-4546-B683-A0331B75C37A}"
 EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Bootstrapper", "src\Bootstrapper\Bootstrapper.wixproj", "{99EC730D-5FCE-4B1C-B2F3-910E26568CA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,14 @@ Global
 		{0EE9B4E6-AC69-4546-B683-A0331B75C37A}.Release|Any CPU.Build.0 = Release|x86
 		{0EE9B4E6-AC69-4546-B683-A0331B75C37A}.Release|x86.ActiveCfg = Release|x86
 		{0EE9B4E6-AC69-4546-B683-A0331B75C37A}.Release|x86.Build.0 = Release|x86
+		{99EC730D-5FCE-4B1C-B2F3-910E26568CA1}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{99EC730D-5FCE-4B1C-B2F3-910E26568CA1}.Debug|Any CPU.Build.0 = Debug|x86
+		{99EC730D-5FCE-4B1C-B2F3-910E26568CA1}.Debug|x86.ActiveCfg = Debug|x86
+		{99EC730D-5FCE-4B1C-B2F3-910E26568CA1}.Debug|x86.Build.0 = Debug|x86
+		{99EC730D-5FCE-4B1C-B2F3-910E26568CA1}.Release|Any CPU.ActiveCfg = Release|x86
+		{99EC730D-5FCE-4B1C-B2F3-910E26568CA1}.Release|Any CPU.Build.0 = Release|x86
+		{99EC730D-5FCE-4B1C-B2F3-910E26568CA1}.Release|x86.ActiveCfg = Release|x86
+		{99EC730D-5FCE-4B1C-B2F3-910E26568CA1}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="DATAFOLDER">
+            <Directory Id="dirF2740F1B38E6022BD5AF9EADC97013F5" Name="Clustering" />
+            <Directory Id="dir5D3C20B01AD3E107EFEFA10D77B4E15D" Name="R" />
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="DataComponents">
+            <Component Id="cmpD75739EBE341F1CECEBD0E17F18DF1CA" Directory="dirF2740F1B38E6022BD5AF9EADC97013F5" Guid="*">
+                <File Id="fil605A1A549CDFA8C1DDD2997AE167B141" KeyPath="yes" Source="$(var.SourceDir)\Clustering\0.txt" />
+            </Component>
+            <Component Id="cmp6C3947B56FB29B75418F27D9D46BA371" Directory="dirF2740F1B38E6022BD5AF9EADC97013F5" Guid="*">
+                <File Id="filBAEBC32C7E71AB4B9F1A0D6E314F182C" KeyPath="yes" Source="$(var.SourceDir)\Clustering\1.txt" />
+            </Component>
+            <Component Id="cmpA459AF519640617DD9687F81CF746ECD" Directory="dirF2740F1B38E6022BD5AF9EADC97013F5" Guid="*">
+                <File Id="fil5F110B680BC0B2DE2AB23C57C1B0E282" KeyPath="yes" Source="$(var.SourceDir)\Clustering\2.txt" />
+            </Component>
+            <Component Id="cmp11694FBF385C92B628ED1CAB7BF9E14C" Directory="dirF2740F1B38E6022BD5AF9EADC97013F5" Guid="*">
+                <File Id="fil0F65DEB77A2575B41DB9733412B3D842" KeyPath="yes" Source="$(var.SourceDir)\Clustering\3.txt" />
+            </Component>
+            <Component Id="cmp4CB31F605AA3018A3D87519635297C54" Directory="dirF2740F1B38E6022BD5AF9EADC97013F5" Guid="*">
+                <File Id="fil0DC696685A7DA689E419E28C4623903E" KeyPath="yes" Source="$(var.SourceDir)\Clustering\4.txt" />
+            </Component>
+            <Component Id="cmp0767C7F8E96D06C76A7B26867509C8DD" Directory="dirF2740F1B38E6022BD5AF9EADC97013F5" Guid="*">
+                <File Id="filBBEAE07F5D5EA0AA8CC711281C2E8274" KeyPath="yes" Source="$(var.SourceDir)\Clustering\5.txt" />
+            </Component>
+            <Component Id="cmpF27F5452850993506C716096BA021C33" Directory="dir5D3C20B01AD3E107EFEFA10D77B4E15D" Guid="*">
+                <File Id="filF54A63FDD46AC284DB444F25A5BFF702" KeyPath="yes" Source="$(var.SourceDir)\R\testWorkspace.RData" />
+            </Component>
+        </ComponentGroup>
+    </Fragment>
+</Wix>
