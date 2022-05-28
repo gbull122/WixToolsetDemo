@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product 
+		Id="*" 
+		Name="AppInstaller" 
+		Language="1033" 
+		Version="1.0.0.0" 
+		Manufacturer="My Company" 
+		UpgradeCode="0f7c4cb0-0a66-42a3-966f-6dbe42b6ce15">
+		
+		<Package 
+			InstallerVersion="200" 
+			Compressed="yes" 
+			InstallScope="perMachine"/>
+
+		<MajorUpgrade 
+			DowngradeErrorMessage="A newer version of [ProductName] is already installed."/>
+		
+		<MediaTemplate
+          EmbedCab="yes"/>
+
+		<Feature 
+			Id="ProductFeature" 
+			Title="AppInstaller" 
+			Level="1">
+			
+			<ComponentGroupRef 
+				Id="AppComponents"/>
+
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory 
+			Id="TARGETDIR" 
+			Name="SourceDir">
+			
+			<Directory 
+				Id="ProgramFilesFolder">
+				
+				<Directory 
+					Id="INSTALLFOLDER" 
+					Name="AppFolder" />
+				
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup 
+			Id="AppComponents" 
+			Directory="INSTALLFOLDER">
+			
+			<Component 
+				Id="DemoAppExe"
+				Guid="{003339C2-1B02-47BF-B493-AC4F092AB8F5}">
+
+				<File
+					Id="DemoApp_Exe"
+					Source="$(var.SolutionDir)src\bin\$(var.Configuration)\net6.0-windows\DemoApp.exe"
+					KeyPath="yes"/>
+				
+			</Component>		   
+
+		</ComponentGroup>
+	</Fragment>
+</Wix>
