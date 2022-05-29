@@ -28,6 +28,8 @@
 				Id="AppComponents"/>
 			<ComponentRef 
 				Id="AppShortcut" />
+			<ComponentRef
+				Id="DesktopShortcut" />
 		</Feature>
 
 		<Icon
@@ -50,15 +52,28 @@
 			<Directory Id="ProgramMenuFolder">
 				<Directory Id="ProgramMenuDir" Name="My Company"/>
 			</Directory>
+
+			<Directory Id="DesktopFolder" Name="Desktop">
+				
+			</Directory>
 		</Directory>
 
 		<DirectoryRef 
 			Id="ProgramMenuDir">
 			<Component 
 				Id="AppShortcut" 
-				Guid="{882F49F7-3F94-4DED-9796-15A3511AED4C}">
-				
+				Guid="{882F49F7-3F94-4DED-9796-15A3511AED4C}">			
 				<RemoveFolder Id="ProgramMenuDir" On="uninstall"/>
+				<RegistryValue Root="HKCU" Key="Software\MyCompany\MyApplicationName" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+			</Component>
+		</DirectoryRef>
+
+		<DirectoryRef
+			Id="DesktopFolder">
+			<Component
+				Id="DesktopShortcut"
+				Guid="{CB37A0BC-17F2-42DF-BA54-BE99CACC8C07}">
+				<RemoveFolder Id="DesktopFolder" On="uninstall"/>
 				<RegistryValue Root="HKCU" Key="Software\MyCompany\MyApplicationName" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
 			</Component>
 		</DirectoryRef>
@@ -87,6 +102,26 @@
 					Icon="MyIcon.ico"
                     Advertise="yes"
 					Arguments="ArgsFromWix"/>
+
+					<Shortcut
+					Id="ADesktopShortcut"
+					Directory="DesktopFolder"
+					Name="Args"
+				    Description="My Application Description"
+					WorkingDirectory="APPLICATIONROOTDIRECTORY"
+					Icon="MyIcon.ico"
+                    Advertise="yes"
+					Arguments="/ARGS"/>
+
+					<Shortcut
+					Id="AnotherDesktopShortcut"
+					Directory="DesktopFolder"
+					Name="More Args"
+				    Description="My Application Description"
+					WorkingDirectory="APPLICATIONROOTDIRECTORY"
+					Icon="MyIcon.ico"
+                    Advertise="yes"
+					Arguments="/MOREARGS"/>
 				</File>
 				
 			</Component>
