@@ -104,6 +104,16 @@
 					Arguments="ArgsFromWix"/>
 
 					<Shortcut
+					Id="AnotherMEnuShortcut"
+					Directory="ProgramMenuDir"
+					Name="More Args"
+				    Description="My Application Description"
+					WorkingDirectory="APPLICATIONROOTDIRECTORY"
+					Icon="MyIcon.ico"
+                    Advertise="yes"
+					Arguments="/MOREARGS"/>
+					
+					<Shortcut
 					Id="ADesktopShortcut"
 					Directory="DesktopFolder"
 					Name="Args"
