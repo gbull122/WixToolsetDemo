@@ -5,9 +5,16 @@
 		Version="1.0.0.0" 
 		Manufacturer="My Company" 
 		UpgradeCode="99ec730d-5fce-4b1c-b2f3-910e26568ca1">
-		
-		<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" />
 
+		<BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost">
+			<Payload Name="BootstrapperCore.config" 
+					 SourceFile="$(var.CustomBootstrapper.TargetDir)Bootstrapper.config" />
+			<Payload SourceFile="$(var.CustomBootstrapper.TargetPath)" />
+		</BootstrapperApplicationRef>
+
+		<WixVariable Id="WixMbaPrereqLicenseUrl" Value="" />
+        <WixVariable Id="WixMbaPrereqPackageId" Value="" />
+		
 		<Chain>
 			<MsiPackage Name="AppInstaller" SourceFile="$(var.SolutionDir)src\AppInstaller\bin\$(var.Configuration)\AppInstaller.msi" Vital="yes" />
 			<MsiPackage Name="DataInstaller" SourceFile="$(var.SolutionDir)src\DataInstaller\bin\$(var.Configuration)\DataInstaller.msi" Vital="yes" />
